@@ -1,0 +1,67 @@
+@import "tailwindcss";
+
+@theme {
+  --color-neon-blue: #3b82f6;
+  --color-neon-cyan: #22d3ee;
+  --color-neon-red: #f43f5e;
+  --color-neon-orange: #fb923c;
+
+  --animate-pulse-slow: pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  --animate-float: float 6s ease-in-out infinite;
+
+  @keyframes float {
+
+    0%,
+    100% {
+      transform: translateY(0);
+    }
+
+    50% {
+      transform: translateY(-10px);
+    }
+  }
+}
+
+:root {
+  --background: #020617;
+  --foreground: #f8fafc;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-sans), system-ui, sans-serif;
+  overflow-x: hidden;
+}
+
+.glass {
+  background: rgba(15, 23, 42, 0.6);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.neon-border-blue {
+  box-shadow: 0 0 15px rgba(59, 130, 246, 0.5);
+  border: 1px solid rgba(59, 130, 246, 0.5);
+}
+
+.neon-border-red {
+  box-shadow: 0 0 15px rgba(244, 63, 94, 0.5);
+  border: 1px solid rgba(244, 63, 94, 0.5);
+}
+
+.neon-text-blue {
+  text-shadow: 0 0 8px rgba(34, 211, 238, 0.8);
+}
+
+.neon-text-red {
+  text-shadow: 0 0 8px rgba(244, 63, 94, 0.8);
+}

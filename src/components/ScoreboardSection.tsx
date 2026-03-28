@@ -1,0 +1,59 @@
+"use client";
+import { motion } from "framer-motion";
+import CountUp from "react-countup";
+import { getPct, itemVariants } from "@/lib/utils";
+import { ShimmerBar } from "./SharedComponents";
+import { Settings, SpecialVote } from "@/types/election";
+
+interface ScoreboardProps {
+  allRowsForScoreboard: { id: string; label: string; votes: number; color: string }[];
+  total: number;
+  settings: Settings;
+  totalVotes: number;
+  invalidVotes: SpecialVote[];
+}
+
+export default function ScoreboardSection({ allRowsForScoreboard, total, settings, totalVotes, invalidVotes }: ScoreboardProps) {
+  return (
+    <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-16">
+      {/* Scoreboard */}
+      <motion.div variants={itemVariants} className="rounded-2xl overflow-hidden glass-card h-fit">
+        <div className="px-5 py-4 border-b border-white/5"><p className="text-yellow-400 text-sm font-bold uppercase tracking-wider">ผลคะแนนทั้งหมด</p></div>
+        <div className="divide-y divide-white/5">
+          {allRowsForScoreboard.map((row, i: number) => (
+            <div key={row.id} className="flex items-center gap-3 px-5 py-3.5">
+              <span className="text-stone-600 font-bold text-sm w-5 shrink-0">{i + 1}</span>
+              <div className="flex-1 min-w-0">
+                <p className="text-sm font-semibold text-white truncate mb-1.5">{row.label}</p>
+                <ShimmerBar pct={parseFloat(getPct(row.votes, total))} color={row.color} delay={0.6 + i * 0.1} />
+              </div>
+              <div className="shrink-0 text-right ml-3">
+                <p className="text-lg font-black tabular-nums" style={{ color: row.color }}><CountUp end={row.votes} duration={2} separator="," preserveValue /></p>
+                <p className="text-xs font-bold" style={{ color: `${row.color}99` }}>{getPct(row.votes, total)}%</p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </motion.div>
+
+      <div className="flex flex-col gap-8">
+        {/* Info Card */}
+        <motion.div variants={itemVariants} className="rounded-2xl overflow-hidden glass-card">
+          <div className="px-5 py-4 border-b border-white/5"><p className="text-yellow-400 text-sm font-bold uppercase tracking-wider">ภาพรวมผู้ใช้สิทธิ์</p></div>
+          <div className="p-6">
+            <p className="text-stone-400 text-sm mb-1">ผู้มาใช้สิทธิ์ทั้งหมด / ผู้มีสิทธิ์</p>
+            <div className="flex items-end gap-3 mb-6">
+              <span className="text-3xl font-black text-white tabular-nums">{total.toLocaleString("th-TH")} <span className="text-xl text-stone-500 font-bold">/ {settings.total_voters.toLocaleString("th-TH")}</span></span>
+              <span className="text-emerald-400 text-sm font-bold bg-emerald-500/10 px-2 py-1 rounded-md mb-1">{getPct(total, settings.total_voters)}% Turnout</span>
+            </div>
+            <div className="space-y-4 pt-4 border-t border-white/5">
+              <div className="flex justify-between items-center text-sm"><span className="text-stone-400">บัตรดี (Valid)</span><span className="font-bold">{totalVotes.toLocaleString("th-TH")}</span></div>
+              {invalidVotes.map((v) => <div key={v.id} className="flex justify-between items-center text-sm"><span className="text-stone-400">{v.label}</span><span className="font-bold">{v.votes.toLocaleString("th-TH")}</span></div>)}
+              <div className="flex justify-between items-center text-sm pt-2 border-t border-white/5"><span className="text-stone-400">คูหาที่นับแล้ว</span><span className="font-bold text-yellow-500">{settings.booths_counted} / {settings.booths_total}</span></div>
+            </div>
+          </div>
+        </motion.div>
+      </div>
+    </div>
+  );
+}
