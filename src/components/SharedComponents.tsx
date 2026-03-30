@@ -14,7 +14,7 @@ export function ShimmerBar({ pct, color, delay = 0.4 }: { pct: number; color: st
 }
 
 export function FloatingLogo({ party, size }: { party: PartyData; size: "xl" | "lg" | "md" | "sm" }) {
-  const dim = { xl: "w-32 h-44 md:w-40 md:h-56", lg: "w-24 h-32 md:w-32 md:h-44", md: "w-20 h-28 md:w-24 md:h-32", sm: "w-10 h-10" }[size];
+  const dim = { xl: "w-40 h-56 md:w-48 md:h-64", lg: "w-32 h-44 md:w-40 md:h-56", md: "w-24 h-32 md:w-32 md:h-44", sm: "w-12 h-12 md:w-16 md:h-16" }[size];
   const radius = size === "sm" ? "rounded-xl" : "rounded-2xl md:rounded-3xl";
   const c = C[party.color_theme] || C.gold;
   return (

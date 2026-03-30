@@ -10,6 +10,7 @@ import HeroHeader from "@/components/HeroHeader";
 import BattleSection from "@/components/BattleSection";
 import PartyCard from "@/components/PartyCard";
 import ScoreboardSection from "@/components/ScoreboardSection";
+import FeedbackForm from "@/components/FeedbackForm";
 
 const FontStyle = () => (
   <style>{`
@@ -159,6 +160,9 @@ export default function ElectionApp() {
           ข้อมูลแสดงผลการเลือกตั้งสภานักเรียน · {settings.school_name} · ปีการศึกษา {settings.school_year}
         </motion.footer>
       </motion.main>
+
+      {/* Floating Webform for Feedback */}
+      <FeedbackForm />
     </div>
   );
 }

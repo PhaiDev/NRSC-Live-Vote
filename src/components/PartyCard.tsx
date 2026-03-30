@@ -17,7 +17,7 @@ export default function PartyCard({ party, total, rank }: { party: PartyData; to
       <motion.div className={`absolute left-0 top-0 bottom-0 w-1 bg-gradient-to-b ${c.bar}`} initial={{ scaleY: 0 }} animate={inView ? { scaleY: 1 } : {}} />
       <div className="p-4">
         <div className="flex gap-3 items-start">
-          <FloatingLogo party={party} size="md" />
+          <FloatingLogo party={party} size="lg" />
           <div className="flex-1 min-w-0">
             <div className="flex items-center gap-2 mb-2 flex-wrap">
               <span className={`text-xs font-black px-2 py-0.5 rounded-full ${c.badge}`}>เบอร์ {party.number}</span>
