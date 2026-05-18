@@ -3,12 +3,13 @@ import { motion } from "framer-motion";
 import { PartyData } from "@/types/election";
 import { C } from "@/lib/utils";
 
-export function ShimmerBar({ pct, color, delay = 0.4 }: { pct: number; color: string; delay?: number }) {
+export function ShimmerBar({ pct, color }: { pct: number; color: string }) {
   return (
     <div className="h-2 rounded-full bg-white/5 overflow-hidden">
-      <motion.div className="h-full rounded-full relative overflow-hidden shimmer-bar"
-        initial={{ width: 0 }} animate={{ width: `${pct}%` }} transition={{ duration: 1.2, ease: "easeOut", delay }}
-        style={{ background: `linear-gradient(90deg, ${color}cc, ${color})` }} />
+      <div
+        className="h-full rounded-full relative overflow-hidden"
+        style={{ width: `${pct}%`, background: `linear-gradient(90deg, ${color}cc, ${color})` }}
+      />
     </div>
   );
 }

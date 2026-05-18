@@ -1,6 +1,5 @@
 "use client";
 import { motion } from "framer-motion";
-import CountUp from "react-countup";
 import { getPct, itemVariants } from "@/lib/utils";
 import { ShimmerBar } from "./SharedComponents";
 import { Settings, SpecialVote } from "@/types/election";
@@ -25,10 +24,10 @@ export default function ScoreboardSection({ allRowsForScoreboard, total, setting
               <span className="text-stone-400 font-bold text-sm w-5 shrink-0">{i + 1}</span>
               <div className="flex-1 min-w-0">
                 <p className="text-sm font-bold text-stone-800 truncate mb-1.5">{row.label}</p>
-                <ShimmerBar pct={parseFloat(getPct(row.votes, total))} color={row.color} delay={0.6 + i * 0.1} />
+                <ShimmerBar pct={parseFloat(getPct(row.votes, total))} color={row.color} />
               </div>
               <div className="shrink-0 text-right ml-3">
-                <p className="text-lg font-black tabular-nums" style={{ color: row.color }}><CountUp end={row.votes} duration={2} separator="," preserveValue /></p>
+                <p className="text-lg font-black tabular-nums" style={{ color: row.color }}>{row.votes.toLocaleString()}</p>
                 <p className="text-xs font-bold" style={{ color: `${row.color}99` }}>{getPct(row.votes, total)}%</p>
               </div>
             </div>

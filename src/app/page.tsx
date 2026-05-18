@@ -131,7 +131,7 @@ export default function ElectionApp() {
 
   return (
     <div className="min-h-screen text-stone-900 bg-[#fafaf9]" style={{
-      backgroundImage: `linear-gradient(to bottom, rgba(255, 255, 255, 0.85) 0%, rgba(255, 255, 255, 0.98) 50%), url('https://instagram.fnak3-1.fna.fbcdn.net/v/t51.82787-15/702530770_17992487615971732_4334660316240148450_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=106&ig_cache_key=Mzg5OTcxMTI3NzY4ODkyMTcwMQ%3D%3D.3-ccb7-5&ccb=7-5&_nc_sid=58cdad&efg=eyJ2ZW5jb2RlX3RhZyI6IkNBUk9VU0VMX0lURU0ueHBpZHMuMTAzNi5zZHIucmVndWxhcl9waG90by5DMyJ9&_nc_ohc=kLvuMwK-9OkQ7kNvwHM4YG_&_nc_oc=AdraLe0pPeaPIjLwX9SgJcefnE8yF-jJC8xTwx0RHNH_I_gPNA3DsBjUuABoHyuaCDa1yl6BgGoit8nvhCeoORty&_nc_ad=z-m&_nc_cid=0&_nc_zt=23&_nc_ht=instagram.fnak3-1.fna&_nc_gid=t_CnleJ9keHxUbgJdSm89Q&_nc_ss=7a22e&oh=00_Af7iYZfajkc1YKo2d6jcHmUT7dQjnxRpYeB_8bhtaDTBpQ&oe=6A10E5AB')`,
+      backgroundImage: `linear-gradient(to bottom, rgba(255, 255, 255, 0.85) 0%, rgba(255, 255, 255, 0.98) 50%), url('https://pmtfzmvcylhpwucxetnu.supabase.co/storage/v1/object/public/NRSC_LIVE_VOTE/Untitled%20design.PNG')`,
       backgroundSize: 'cover',
       backgroundPosition: 'center',
       backgroundAttachment: 'fixed',

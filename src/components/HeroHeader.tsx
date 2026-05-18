@@ -1,6 +1,5 @@
 "use client";
 import { motion } from "framer-motion";
-import CountUp from "react-countup";
 import { Settings } from "@/types/election";
 import { containerVariants, itemVariants, slideLeft } from "@/lib/utils";
 import { LiveBadge } from "./SharedComponents";
@@ -33,7 +32,7 @@ export default function HeroHeader({ settings, total, turnout, isConnected }: { 
             ].map((s, i) => (
               <motion.div key={i} variants={itemVariants} className="flex flex-col justify-center items-center glass-card rounded-xl sm:rounded-2xl p-2 sm:px-5 sm:py-3 text-center bg-white/60 backdrop-blur-md border border-stone-200 shadow-sm">
                 <span className={`text-base sm:text-2xl lg:text-3xl font-black tabular-nums leading-none ${s.cls}`}>
-                  {s.value !== null ? <CountUp end={s.value} duration={2} separator="," /> : s.display}
+                  {s.value !== null ? s.value.toLocaleString() : s.display}
                 </span>
                 <span className="text-[9px] sm:text-xs text-stone-500 font-bold mt-1">{s.label}</span>
               </motion.div>
