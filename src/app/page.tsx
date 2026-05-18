@@ -39,20 +39,21 @@ const FontStyle = () => (
     .floating { animation: breathe 4s ease-in-out infinite; }
 
     .glass-card {
-      background: rgba(41, 37, 36, 0.45);
+      background: rgba(255, 255, 255, 0.7);
       backdrop-filter: blur(20px);
       -webkit-backdrop-filter: blur(20px);
-      border: 1px solid rgba(255,255,255,0.1);
+      border: 1px solid rgba(0, 0, 0, 0.05);
+      box-shadow: 0 10px 30px rgba(0,0,0,0.02);
     }
     .glass-card-gold {
-      background: rgba(120, 113, 108, 0.15);
+      background: rgba(255, 255, 255, 0.7);
       backdrop-filter: blur(24px);
       -webkit-backdrop-filter: blur(24px);
       border: 1px solid rgba(212,160,23,0.35);
       box-shadow: 0 8px 40px rgba(212,160,23,0.1);
     }
     .glass-card-red {
-      background: rgba(120, 113, 108, 0.15);
+      background: rgba(255, 255, 255, 0.7);
       backdrop-filter: blur(24px);
       -webkit-backdrop-filter: blur(24px);
       border: 1px solid rgba(192,57,43,0.35);
@@ -129,7 +130,7 @@ export default function ElectionApp() {
   ];
 
   return (
-    <div className="min-h-screen text-white bg-[#1c1917]" style={{
+    <div className="min-h-screen text-stone-900 bg-[#fafaf9]" style={{
       backgroundImage: `linear-gradient(to bottom, rgba(255, 255, 255, 0.85) 0%, rgba(255, 255, 255, 0.98) 50%), url('https://instagram.fnak3-1.fna.fbcdn.net/v/t51.82787-15/702530770_17992487615971732_4334660316240148450_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=106&ig_cache_key=Mzg5OTcxMTI3NzY4ODkyMTcwMQ%3D%3D.3-ccb7-5&ccb=7-5&_nc_sid=58cdad&efg=eyJ2ZW5jb2RlX3RhZyI6IkNBUk9VU0VMX0lURU0ueHBpZHMuMTAzNi5zZHIucmVndWxhcl9waG90by5DMyJ9&_nc_ohc=kLvuMwK-9OkQ7kNvwHM4YG_&_nc_oc=AdraLe0pPeaPIjLwX9SgJcefnE8yF-jJC8xTwx0RHNH_I_gPNA3DsBjUuABoHyuaCDa1yl6BgGoit8nvhCeoORty&_nc_ad=z-m&_nc_cid=0&_nc_zt=23&_nc_ht=instagram.fnak3-1.fna&_nc_gid=t_CnleJ9keHxUbgJdSm89Q&_nc_ss=7a22e&oh=00_Af7iYZfajkc1YKo2d6jcHmUT7dQjnxRpYeB_8bhtaDTBpQ&oe=6A10E5AB')`,
       backgroundSize: 'cover',
       backgroundPosition: 'center',
@@ -146,8 +147,8 @@ export default function ElectionApp() {
 
         <section className="flex flex-col gap-6 md:gap-12">
           <motion.div variants={itemVariants} className="flex items-center gap-4">
-            <span className="text-yellow-400 text-sm md:text-2xl font-black uppercase tracking-[0.2em]">CANDIDATES · รายละเอียดผู้สมัคร</span>
-            <div className="flex-1 h-px bg-gradient-to-r from-yellow-800/40 to-transparent" />
+            <span className="text-stone-800 text-sm md:text-2xl font-black uppercase tracking-[0.2em]">CANDIDATES · รายละเอียดผู้สมัคร</span>
+            <div className="flex-1 h-px bg-gradient-to-r from-stone-300 to-transparent" />
           </motion.div>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-12">
             {sorted.map((p, i) => <PartyCard key={p.id} party={p} total={total} rank={i + 1} />)}
@@ -162,7 +163,7 @@ export default function ElectionApp() {
           invalidVotes={specialVotes}
         />
 
-        <motion.footer variants={itemVariants} className="mt-10 text-center text-stone-700 text-xs pb-6">
+        <motion.footer variants={itemVariants} className="mt-10 text-center text-stone-500 font-medium text-xs pb-6">
           ข้อมูลแสดงผลการเลือกตั้งสภานักเรียน · {settings.school_name} · ปีการศึกษา {settings.school_year}
         </motion.footer>
       </motion.main>

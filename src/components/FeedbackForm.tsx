@@ -91,11 +91,11 @@ export default function FeedbackForm() {
               initial={{ scale: 0.9, y: 20, opacity: 0 }}
               animate={{ scale: 1, y: 0, opacity: 1 }}
               exit={{ scale: 0.9, y: 20, opacity: 0 }}
-              className="relative w-full max-w-md p-6 overflow-hidden rounded-2xl glass-card-gold shadow-[0_0_50px_rgba(234,179,8,0.1)]"
+              className="relative w-full max-w-md p-6 overflow-hidden rounded-2xl glass-card-gold shadow-2xl"
             >
               <button
                 onClick={() => setIsOpen(false)}
-                className="absolute top-4 right-4 p-1 rounded-full text-white/60 hover:text-white hover:bg-white/10 transition-colors z-10"
+                className="absolute top-4 right-4 p-1 rounded-full text-stone-400 hover:text-stone-600 hover:bg-stone-100 transition-colors z-10"
               >
                 <X className="w-5 h-5" />
               </button>
@@ -107,19 +107,19 @@ export default function FeedbackForm() {
               ) : (
                 <form onSubmit={handleSubmit} className="flex flex-col gap-5 mt-2">
                   <div className="flex flex-col gap-1">
-                    <label htmlFor="name" className="text-sm font-medium text-white/80 uppercase tracking-widest text-xs">👤 ชื่อ (optional)</label>
+                    <label htmlFor="name" className="text-sm font-medium text-stone-600 uppercase tracking-widest text-xs">👤 ชื่อ (optional)</label>
                     <input
                       id="name"
                       disabled={isSubmitting}
                       value={name}
                       onChange={(e) => setName(e.target.value)}
                       placeholder="ไม่ต้องระบุก็ได้..."
-                      className="w-full px-4 py-3 bg-black/40 border border-yellow-500/20 focus:border-yellow-500/50 rounded-lg text-white placeholder-white/30 outline-none transition-colors disabled:opacity-50 text-sm"
+                      className="w-full px-4 py-3 bg-white/80 border border-yellow-300 focus:border-yellow-500 rounded-lg text-stone-900 placeholder-stone-400 outline-none transition-colors disabled:opacity-50 text-sm shadow-sm"
                     />
                   </div>
 
                   <div className="flex flex-col gap-2">
-                    <label className="text-sm font-medium text-white/80 uppercase tracking-widest text-xs">⭐ ใช้งานง่ายไหม? (1-5) <span className="text-red-500">*</span></label>
+                    <label className="text-sm font-medium text-stone-600 uppercase tracking-widest text-xs">⭐ ใช้งานง่ายไหม? (1-5) <span className="text-red-500">*</span></label>
                     <div className="flex gap-2">
                       {[1, 2, 3, 4, 5].map((star) => (
                         <button
@@ -131,7 +131,7 @@ export default function FeedbackForm() {
                           <Star
                             className={`w-8 h-8 md:w-10 md:h-10 ${star <= rating
                               ? "fill-yellow-500 text-yellow-500"
-                              : "text-white/20 fill-transparent"
+                              : "text-stone-200 fill-stone-100"
                               } transition-colors`}
                           />
                         </button>
@@ -140,16 +140,16 @@ export default function FeedbackForm() {
                   </div>
 
                   <div className="flex flex-col gap-2">
-                    <label className="text-sm font-medium text-white/80 uppercase tracking-widest text-xs">🏫 ถ้าโรงเรียนคุณมีระบบนี้ จะใช้ไหม? <span className="text-red-500">*</span></label>
+                    <label className="text-sm font-medium text-stone-600 uppercase tracking-widest text-xs">🏫 ถ้าโรงเรียนคุณมีระบบนี้ จะใช้ไหม? <span className="text-red-500">*</span></label>
                     <div className="flex gap-2">
                       {["Yes", "No", "Maybe"].map((opt) => (
                         <button
                           key={opt}
                           type="button"
                           onClick={() => setWouldUse(opt)}
-                          className={`flex-1 py-2.5 rounded-lg border transition-all text-sm font-bold ${wouldUse === opt
-                            ? "bg-yellow-500 border-yellow-500 text-black shadow-[0_0_15px_rgba(234,179,8,0.4)]"
-                            : "bg-black/40 border-yellow-500/20 text-white/70 hover:border-yellow-500/50"
+                          className={`flex-1 py-2.5 rounded-lg border transition-all text-sm font-bold shadow-sm ${wouldUse === opt
+                            ? "bg-yellow-500 border-yellow-500 text-black shadow-md"
+                            : "bg-white/80 border-stone-200 text-stone-600 hover:border-stone-300 hover:bg-stone-50"
                             }`}
                         >
                           {opt}
@@ -159,7 +159,7 @@ export default function FeedbackForm() {
                   </div>
 
                   <div className="flex flex-col gap-1">
-                    <label htmlFor="message" className="text-sm font-medium text-white/80 uppercase tracking-widest text-xs">📝 ติดตรงไหนบ้าง? (optional)</label>
+                    <label htmlFor="message" className="text-sm font-medium text-stone-600 uppercase tracking-widest text-xs">📝 ติดตรงไหนบ้าง? (optional)</label>
                     <textarea
                       id="message"
                       disabled={isSubmitting}
@@ -167,7 +167,7 @@ export default function FeedbackForm() {
                       onChange={(e) => setMessage(e.target.value)}
                       placeholder="ข้อเสนอแนะเพิ่มเติม..."
                       rows={3}
-                      className="w-full px-4 py-3 bg-black/40 border border-yellow-500/20 focus:border-yellow-500/50 rounded-lg text-white placeholder-white/30 outline-none transition-colors resize-none disabled:opacity-50 text-sm"
+                      className="w-full px-4 py-3 bg-white/80 border border-yellow-300 focus:border-yellow-500 rounded-lg text-stone-900 placeholder-stone-400 outline-none transition-colors resize-none disabled:opacity-50 text-sm shadow-sm"
                     />
                   </div>
 
