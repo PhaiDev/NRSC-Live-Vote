@@ -17,8 +17,8 @@ const FontStyle = () => (
     @import url('https://fonts.googleapis.com/css2?family=Sarabun:wght@400;500;600;700;800;900&display=swap');
     *, *::before, *::after { font-family: 'Sarabun', system-ui, sans-serif; box-sizing: border-box; }
     ::-webkit-scrollbar { width: 6px; }
-    ::-webkit-scrollbar-track { background: #0c0a09; }
-    ::-webkit-scrollbar-thumb { background: #3a2e10; border-radius: 9999px; }
+    ::-webkit-scrollbar-track { background: #1c1917; }
+    ::-webkit-scrollbar-thumb { background: #57534e; border-radius: 9999px; }
 
     @keyframes shimmer {
       0%   { transform: translateX(-100%); }
@@ -28,7 +28,7 @@ const FontStyle = () => (
       content: '';
       position: absolute;
       inset: 0;
-      background: linear-gradient(90deg, transparent 0%, rgba(255,255,255,0.25) 50%, transparent 100%);
+      background: linear-gradient(90deg, transparent 0%, rgba(255,255,255,0.3) 50%, transparent 100%);
       animation: shimmer 2s ease-in-out infinite;
     }
 
@@ -39,24 +39,24 @@ const FontStyle = () => (
     .floating { animation: breathe 4s ease-in-out infinite; }
 
     .glass-card {
-      background: rgba(28, 20, 9, 0.55);
-      backdrop-filter: blur(16px);
-      -webkit-backdrop-filter: blur(16px);
-      border: 1px solid rgba(255,255,255,0.07);
+      background: rgba(41, 37, 36, 0.45);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border: 1px solid rgba(255,255,255,0.1);
     }
     .glass-card-gold {
-      background: rgba(42, 26, 8, 0.6);
-      backdrop-filter: blur(16px);
-      -webkit-backdrop-filter: blur(16px);
-      border: 1px solid rgba(212,160,23,0.22);
-      box-shadow: 0 8px 40px rgba(212,160,23,0.05);
+      background: rgba(120, 113, 108, 0.15);
+      backdrop-filter: blur(24px);
+      -webkit-backdrop-filter: blur(24px);
+      border: 1px solid rgba(212,160,23,0.35);
+      box-shadow: 0 8px 40px rgba(212,160,23,0.1);
     }
     .glass-card-red {
-      background: rgba(42, 10, 10, 0.6);
-      backdrop-filter: blur(16px);
-      -webkit-backdrop-filter: blur(16px);
-      border: 1px solid rgba(192,57,43,0.22);
-      box-shadow: 0 8px 40px rgba(192,57,43,0.05);
+      background: rgba(120, 113, 108, 0.15);
+      backdrop-filter: blur(24px);
+      -webkit-backdrop-filter: blur(24px);
+      border: 1px solid rgba(192,57,43,0.35);
+      box-shadow: 0 8px 40px rgba(192,57,43,0.1);
     }
   `}</style>
 );
@@ -115,7 +115,7 @@ export default function ElectionApp() {
     setIsConnected(true);
   }
 
-  if (!settings) return <div className="min-h-screen flex items-center justify-center bg-[#0c0a09]"><p className="text-yellow-500 font-bold"><FontStyle />Loading Live Dashboard...</p></div>;
+  if (!settings) return <div className="min-h-screen flex items-center justify-center bg-[#1c1917]"><p className="text-yellow-500 font-bold"><FontStyle />Loading Live Dashboard...</p></div>;
 
   const validVotes = parties.reduce((sum, p) => sum + p.votes, 0);
   const invalidVotesCount = specialVotes.reduce((sum, s) => sum + s.votes, 0);
@@ -129,7 +129,13 @@ export default function ElectionApp() {
   ];
 
   return (
-    <div className="min-h-screen text-white bg-[#0c0a09]" style={{ background: "radial-gradient(ellipse at top, #1a0c02 0%, #0c0a09 60%)" }}>
+    <div className="min-h-screen text-white bg-[#1c1917]" style={{
+      backgroundImage: `linear-gradient(to bottom, rgba(255, 255, 255, 0.85) 0%, rgba(255, 255, 255, 0.98) 50%), url('https://instagram.fnak3-1.fna.fbcdn.net/v/t51.82787-15/702530770_17992487615971732_4334660316240148450_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=106&ig_cache_key=Mzg5OTcxMTI3NzY4ODkyMTcwMQ%3D%3D.3-ccb7-5&ccb=7-5&_nc_sid=58cdad&efg=eyJ2ZW5jb2RlX3RhZyI6IkNBUk9VU0VMX0lURU0ueHBpZHMuMTAzNi5zZHIucmVndWxhcl9waG90by5DMyJ9&_nc_ohc=kLvuMwK-9OkQ7kNvwHM4YG_&_nc_oc=AdraLe0pPeaPIjLwX9SgJcefnE8yF-jJC8xTwx0RHNH_I_gPNA3DsBjUuABoHyuaCDa1yl6BgGoit8nvhCeoORty&_nc_ad=z-m&_nc_cid=0&_nc_zt=23&_nc_ht=instagram.fnak3-1.fna&_nc_gid=t_CnleJ9keHxUbgJdSm89Q&_nc_ss=7a22e&oh=00_Af7iYZfajkc1YKo2d6jcHmUT7dQjnxRpYeB_8bhtaDTBpQ&oe=6A10E5AB')`,
+      backgroundSize: 'cover',
+      backgroundPosition: 'center',
+      backgroundAttachment: 'fixed',
+      backgroundBlendMode: 'multiply'
+    }}>
       <FontStyle />
       <HeroHeader settings={settings} total={total} turnout={turnout} isConnected={isConnected} />
 
@@ -148,12 +154,12 @@ export default function ElectionApp() {
           </div>
         </section>
 
-        <ScoreboardSection 
-          allRowsForScoreboard={allRowsForScoreboard} 
-          total={total} 
-          settings={settings} 
-          totalVotes={validVotes} 
-          invalidVotes={specialVotes} 
+        <ScoreboardSection
+          allRowsForScoreboard={allRowsForScoreboard}
+          total={total}
+          settings={settings}
+          totalVotes={validVotes}
+          invalidVotes={specialVotes}
         />
 
         <motion.footer variants={itemVariants} className="mt-10 text-center text-stone-700 text-xs pb-6">
